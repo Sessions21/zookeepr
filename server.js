@@ -1,5 +1,7 @@
 const express = require('express');
 
+const PORT = process.env.PORT || 3001;
+
 //Instatiate a Server with this
 const app = express();
 
@@ -54,8 +56,8 @@ app.get('/api/animals', (req, res) => {
 });
 
 //starts the server listening for requests
-app.listen(3001, () => {
-  console.log(`API server now on port 3001!`);
+app.listen(PORT, () => {
+  console.log(`API server now on port ${PORT}!`);
 });
 
 // After the above run "npm start" to initiate server port
