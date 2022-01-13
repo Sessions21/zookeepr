@@ -44,6 +44,11 @@ function filterByQuery(query, animalsArray) {
   }
   // return the filtered results:
   return filteredResults;
+};
+
+function findById(id, animalsArray) {
+  const result = animalsArray.filter(animal => animal.id === id)[0];
+  return result;
 }
 // get method requires path for client to fetch, then callback funciton to execute
 app.get('/api/animals', (req, res) => {
@@ -53,6 +58,15 @@ app.get('/api/animals', (req, res) => {
   }
   //the response is to send something back using the json method
   res.json(results);
+});
+
+app.get('/api/animals/:id', (req, res) => {
+  const result = findById(req.params.id, animals);
+  if (result) {
+    res.json(result);
+  } else {
+    res.send(404);
+  }
 });
 
 //starts the server listening for requests
